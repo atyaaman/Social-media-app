@@ -1,0 +1,17 @@
+<%- include('partials/header'); -%> 
+
+<h1>Discuss</h1>
+
+<p> <%= discuss %> </p>
+
+<% postArray.forEach(function(post) { %>
+
+    <h1><%= post.postTitle %> </h1>
+    <p> <%= post.postContent.substring(0 , 100) + " ...." %>
+        <a href="/post/<%=post.postTitle%> ">Readmore</a>
+    </p>
+<%}); %> 
+
+<h1><a href="/compose">Composs</a></h1>
+
+<%- include('partials/footer'); -%> 

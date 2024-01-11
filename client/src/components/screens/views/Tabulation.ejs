@@ -1,0 +1,97 @@
+<%- include('partials/header'); -%>
+
+
+    <div>
+        <blockquote>
+            <h2><strong>Tabulation and Memoization</strong></h2>
+            <p>Prerequisite &#8211; <a href="/DP">Dynamic
+                Programming</a>&nbsp;<br>There are two different ways to store the values so that the
+                values of a sub-problem can be reused. Here, will discuss two patterns of solving dynamic programming
+                (DP) problems:&nbsp;<br>&nbsp;</p>
+            <ol>
+                <li><strong>Tabulation:</strong> Bottom Up</li>
+                <li><strong>Memoization:</strong> Top Down</li>
+            </ol>
+            <p>Before getting to the definitions of the above two terms consider the following
+                statements:&nbsp;<br>&nbsp;</p>
+            <div id=GFG_AD_gfg_mobile_336x280></div>
+            <ul>
+                <li><strong>Version 1</strong>: I will study the theory of DP from GeeksforGeeks, then I will practice
+                    some problems on classic DP and hence I will master DP.</li>
+                <li><strong>Version 2</strong>: To Master DP, I would have to practice Dynamic problems and practice
+                    problems &#8211; Firstly, I would have to study some theories of DP from GeeksforGeeks</li>
+            </ul>
+            <p>Both versions say the same thing, the difference simply lies in the way of conveying the message and
+                that&#8217;s exactly what Bottom-Up and Top-Down DP do. Version 1 can be related to Bottom-Up DP and
+                Version-2 can be related as Top-Down DP.&nbsp;<br>&nbsp;</p>
+            <p style=text-align:center><strong>Tabulation Method &#8211; Bottom Up Dynamic Programming&nbsp;</strong>
+            </p>
+            <p>As the name itself suggests starting from the bottom and accumulating answers to the top. Let&#8217;s
+                discuss in terms of state transition.&nbsp;</p>
+            <p>Let&#8217;s describe a state for our DP problem to be dp[x] with dp[0] as base state&nbsp;and dp[n] as
+                our destination state.&nbsp;So,&nbsp; we need to find the value of destination state i.e
+                dp[n].&nbsp;<br>If we start our transition from our base state i.e dp[0] and follow our state transition
+                relation to reach our destination state dp[n], we call it the Bottom-Up approach as it is quite clear
+                that we started our transition from the bottom base state and reached the topmost desired state.&nbsp;
+            </p>
+            <p><strong>Now, Why do we call it the</strong> <strong>tabulation method?</strong>&nbsp;</p>
+            <p>To know this let&#8217;s first write some code to calculate the factorial of a number using a bottom-up
+                approach.&nbsp;Once, again as our general procedure to solve a DP we first define a state. In this case,
+                we define a state as dp[x], where dp[x] is to find the factorial of x.&nbsp;</p>
+            <p>Now, it is quite obvious that dp[x+1] = dp[x] * (x+1)&nbsp;<br>&nbsp;</p>
+            <pre>// Tabulated version to find factorial x.
+int dp[MAXN];
+
+// base case
+int dp[0] = 1;
+for (int i = 1; i&lt; =n; i++)
+{
+    dp[i] = dp[i-1] * i;
+}</pre>
+            <p>The above code clearly follows the bottom-up approach as it starts its transition from the bottom-most
+                base case dp[0] and reaches its destination state dp[n]. Here, we may notice that the DP table is being
+                populated sequentially and we are directly accessing the calculated states from the table itself and
+                hence, we call it the tabulation method.&nbsp;</p>
+            <p>&nbsp;</p>
+            <p style=text-align:center><strong>Memoization Method &#8211; Top-Down Dynamic Programming&nbsp;</strong>
+            </p>
+            <p>Once, again let&#8217;s describe it in terms of state transition. If we need to find the value for some
+                state say dp[n] and instead of starting from the base state that i.e dp[0] we ask our answer from the
+                states that can reach the destination state dp[n] following the state transition relation, then it is
+                the top-down fashion of DP.&nbsp;</p>
+            <div style="text-align:center;margin:20px 0" id=GFG_AD_gfg_outstream_incontent></div>
+            <p>Here, we start our journey from the top most destination state and compute its answer by taking in count
+                the values of states that can reach the destination state, till we reach the bottom-most base
+                state.&nbsp;</p>
+            <p>Once again, let&#8217;s write the code for the factorial problem in the top-down fashion&nbsp;<br>&nbsp;
+            </p>
+            <pre>// Memoized version to find factorial x.
+// To speed up we store the values
+// of calculated states
+
+// initialized to -1
+int dp[MAXN]
+
+// return fact x!
+int solve(int x)
+{
+    if (x==0)
+        return 1;
+    if (dp[x]!=-1)
+        return dp[x];
+    return (dp[x] = x * solve(x-1));
+}</pre>
+            <p>As we can see we are storing the most recent cache up to a limit so that if next time we got a call from
+                the same state we simply return it from the memory. So, this is why we call it memoization as we are
+                storing the most recent state values.&nbsp;</p>
+            <p>In this case, the memory layout is linear that&#8217;s why it may seem that the memory is being filled in
+                a sequential manner like the tabulation method, but you may consider any other top-down DP having 2D
+                memory layout like Min
+                Cost Path, here the memory is not filled in a sequential manner.&nbsp;<br>&nbsp;</p>
+            <p><img src=https://media.geeksforgeeks.org/wp-content/cdn-uploads/Tabulation-vs-Memoization-1.png
+                    alt=tabulation-vs-memoization></p>
+        </blockquote>
+    </div>
+
+
+    <%- include('partials/footer'); -%>

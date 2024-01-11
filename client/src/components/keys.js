@@ -1,0 +1,6 @@
+module.exports={
+    CLOUDNAME:"dl162qeyp",
+    CLOUDAPIKEY:"868923937955688",
+    CLOUDINARYSECRET:"o6bd8pURovcUQZthkRmCTfOJD0E"
+}
+

@@ -1,0 +1,786 @@
+<%- include('partials/header'); -%>
+
+
+    <div>
+        <blockquote>
+            <p>The <strong>selection sort algorithm</strong> sorts an array by repeatedly finding the minimum element
+                (considering ascending order) from the unsorted part and putting it at the beginning.&nbsp;</p>
+            <p>The algorithm maintains two subarrays in a given array.</p>
+            <ul>
+                <li>The subarray which already sorted.&nbsp;</li>
+                <li>The remaining subarray was unsorted.</li>
+            </ul>
+            <p>In every iteration of the selection sort, the minimum element (considering ascending order) from the
+                unsorted subarray is picked and moved to the sorted subarray.&nbsp;</p>
+            <h2><strong><u>Flowchart of the Selection Sort:</u></strong><u>&nbsp;</u><br>&nbsp;</h2>
+            <h2><img src=https://media.geeksforgeeks.org/wp-content/cdn-uploads/20220203094305/Selection-Sort-Flowhchart.png
+                    alt=Selection-Sort-Flowhchart><br><u>How selection sort works?</u></h2>
+            <div style="text-align:center;margin:20px 0" id=GFG_AD_gfg_outstream_incontent></div>
+            <blockquote>
+                <p>Lets consider the following array as an example: <strong>arr[] = {64, 25, 12, 22, 11}</strong></p>
+                <p><strong>First pass:</strong></p>
+                <ul>
+                    <li>For the first position in the sorted array, the whole array is traversed from index 0 to 4
+                        sequentially. The first position where <strong>64 </strong>is stored presently, after traversing
+                        whole array it is clear that <strong>11 </strong>is the lowest value.</li>
+                </ul>
+                <figure class=table>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>&nbsp; &nbsp;<strong>64 &nbsp;&nbsp;</strong></td>
+                                <td>&nbsp; &nbsp;25 &nbsp;&nbsp;</td>
+                                <td>&nbsp; &nbsp;12 &nbsp;&nbsp;</td>
+                                <td>&nbsp; &nbsp;22 &nbsp;&nbsp;</td>
+                                <td>&nbsp; &nbsp;11 &nbsp;&nbsp;</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </figure>
+                <ul>
+                    <li>Thus, replace 64 with 11. After one iteration <strong>11</strong>, which happens to be the least
+                        value in the array, tends to appear in the first position of the sorted list.</li>
+                </ul>
+                <figure class=table>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>&nbsp; &nbsp;<strong>11 &nbsp;&nbsp;</strong></td>
+                                <td>&nbsp; &nbsp;25 &nbsp;&nbsp;</td>
+                                <td>&nbsp; &nbsp;12 &nbsp;&nbsp;</td>
+                                <td>&nbsp; &nbsp;22 &nbsp;&nbsp;</td>
+                                <td>&nbsp; &nbsp;64 &nbsp;&nbsp;</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </figure>
+                <p><strong>Second Pass:</strong></p>
+                <ul>
+                    <li>For the second position, where 25 is present, again traverse the rest of the array in a
+                        sequential manner.</li>
+                </ul>
+                <figure class=table>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>&nbsp; &nbsp;11 &nbsp;&nbsp;</td>
+                                <td>&nbsp; &nbsp;<strong>25 &nbsp;&nbsp;</strong></td>
+                                <td>&nbsp; &nbsp;12 &nbsp;&nbsp;</td>
+                                <td>&nbsp; &nbsp;22 &nbsp;&nbsp;</td>
+                                <td>&nbsp; &nbsp;64 &nbsp;&nbsp;</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </figure>
+                <ul>
+                    <li>After traversing, we found that <strong>12</strong> is the second lowest value in the array and
+                        it should appear at the second place in the array, thus swap these values.</li>
+                </ul>
+                <figure class=table>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>&nbsp; &nbsp;11 &nbsp;&nbsp;</td>
+                                <td>&nbsp; &nbsp;<strong>12 &nbsp;&nbsp;</strong></td>
+                                <td>&nbsp; &nbsp;25 &nbsp;&nbsp;</td>
+                                <td>&nbsp; &nbsp;22 &nbsp;&nbsp;</td>
+                                <td>&nbsp; &nbsp;64 &nbsp;&nbsp;</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </figure>
+                <p><strong>Third Pass:</strong></p>
+                <ul>
+                    <li>Now, for third place, where <strong>25</strong> is present again traverse the rest of the array
+                        and find the third least value present in the array.</li>
+                </ul>
+                <figure class=table>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>&nbsp; &nbsp;11 &nbsp;&nbsp;</td>
+                                <td>&nbsp; &nbsp;12<strong> &nbsp;&nbsp;</strong></td>
+                                <td>&nbsp; &nbsp;<strong>25</strong> &nbsp;&nbsp;</td>
+                                <td>&nbsp; &nbsp;22 &nbsp;&nbsp;</td>
+                                <td>&nbsp; &nbsp;64 &nbsp;&nbsp;</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </figure>
+                <ul>
+                    <li>While traversing, <strong>22 </strong>came out to be the third least value and it should appear
+                        at the third place in the array, thus swap <strong>22 </strong>with element present at third
+                        position.</li>
+                </ul>
+                <figure class=table>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>&nbsp; &nbsp;11 &nbsp;&nbsp;</td>
+                                <td>&nbsp; &nbsp;12<strong> &nbsp;&nbsp;</strong></td>
+                                <td>&nbsp; &nbsp;<strong>22</strong> &nbsp;&nbsp;</td>
+                                <td>&nbsp; &nbsp;25 &nbsp;&nbsp;</td>
+                                <td>&nbsp; &nbsp;64 &nbsp;&nbsp;</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </figure>
+                <p><strong>Fourth pass:</strong></p>
+                <ul>
+                    <li>Similarly, for fourth position traverse the rest of the array and find the fourth least element
+                        in the array&nbsp;</li>
+                    <li>As <strong>25 </strong>is the 4th lowest value hence, it will place at the fourth position.</li>
+                </ul>
+                <figure class=table>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>&nbsp; &nbsp;11 &nbsp;&nbsp;</td>
+                                <td>&nbsp; &nbsp;12<strong> &nbsp;&nbsp;</strong></td>
+                                <td>&nbsp; &nbsp;22 &nbsp;&nbsp;</td>
+                                <td>&nbsp; &nbsp;<strong>25 &nbsp;&nbsp;</strong></td>
+                                <td>&nbsp; &nbsp;64 &nbsp;&nbsp;</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </figure>
+                <p><strong>Fifth Pass:</strong></p>
+                <ul>
+                    <li>At last the largest value present in the array automatically get placed at the last position in
+                        the array</li>
+                    <li>The resulted array is the sorted array.</li>
+                </ul>
+                <figure class=table>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>&nbsp; &nbsp;11 &nbsp;&nbsp;</th>
+                                <th>&nbsp; &nbsp;12<strong> &nbsp;&nbsp;</strong></th>
+                                <th>&nbsp; &nbsp;22 &nbsp;&nbsp;</th>
+                                <th>&nbsp; &nbsp;<strong>25 &nbsp;&nbsp;</strong></th>
+                                <th>&nbsp; &nbsp;64 &nbsp;&nbsp;</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </figure>
+            </blockquote>
+            <p>Follow the below steps to solve the problem:</p>
+            <ul>
+                <li>Initialize minimum value(<strong>min_idx</strong>) to location 0.</li>
+                <li>Traverse the array to find the minimum element in the array.</li>
+                <li>While traversing if any element smaller than <strong>min_idx </strong>is found then swap both the
+                    values.</li>
+                <li>Then, increment <strong>min_idx</strong> to point to the next element.</li>
+                <li>Repeat until the array is sorted.</li>
+            </ul>
+            <div hidead=auto></div>
+            <p>Below is the implementation of the above approach:</p>
+            <div class=responsive-tabs>
+                <h2 class=tabtitle>C++</h2>
+                <div class=tabcontent>
+                    <div class=code-block>
+                        <div class=code-container>
+                            <div id=highlighter_676929 class="syntaxhighlighter nogutter">
+                                <table border=0 cellpadding=0 cellspacing=0>
+                                    <tbody>
+                                        <tr>
+                                            <td class=code>
+                                                <div class=container>
+                                                    <div class="line number1 index0 alt2"><code
+                                                            class=comments>// C++ program for implementation of</code>
+                                                    </div>
+                                                    <div class="line number2 index1 alt1"><code
+                                                            class=comments>// selection sort</code></div>
+                                                    <div class="line number3 index2 alt2"><code
+                                                            class=preprocessor>#include &lt;bits/stdc++.h></code></div>
+                                                    <div class="line number4 index3 alt1"><code
+                                                            class="keyword bold">using</code> <code
+                                                            class="keyword bold">namespace</code> <code
+                                                            class=plain>std;</code></div>
+                                                    <div class="line number5 index4 alt2">&nbsp;</div>
+                                                    <div class="line number6 index5 alt1"><code
+                                                            class=comments>//Swap function</code></div>
+                                                    <div class="line number7 index6 alt2"><code
+                                                            class="keyword bold">void</code> <code
+                                                            class=plain>swap(</code><code class="color1 bold">int</code>
+                                                        <code class=plain>*xp, </code><code
+                                                            class="color1 bold">int</code> <code class=plain>*yp)</code>
+                                                    </div>
+                                                    <div class="line number8 index7 alt1"><code class=plain>{</code>
+                                                    </div>
+                                                    <div class="line number9 index8 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class="color1 bold">int</code> <code
+                                                            class=plain>temp = *xp;</code></div>
+                                                    <div class="line number10 index9 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=plain>*xp = *yp;</code></div>
+                                                    <div class="line number11 index10 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=plain>*yp = temp;</code></div>
+                                                    <div class="line number12 index11 alt1"><code class=plain>}</code>
+                                                    </div>
+                                                    <div class="line number13 index12 alt2">&nbsp;</div>
+                                                    <div class="line number14 index13 alt1"><code
+                                                            class="keyword bold">void</code> <code
+                                                            class=plain>selectionSort(</code><code
+                                                            class="color1 bold">int</code> <code
+                                                            class=plain>arr[], </code><code
+                                                            class="color1 bold">int</code> <code class=plain>n)</code>
+                                                    </div>
+                                                    <div class="line number15 index14 alt2"><code class=plain>{</code>
+                                                    </div>
+                                                    <div class="line number16 index15 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class="color1 bold">int</code> <code
+                                                            class=plain>i, j, min_idx;</code></div>
+                                                    <div class="line number17 index16 alt2">&nbsp;</div>
+                                                    <div class="line number18 index17 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=comments>// One by one move boundary of</code></div>
+                                                    <div class="line number19 index18 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=comments>// unsorted subarray</code></div>
+                                                    <div class="line number20 index19 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class="keyword bold">for</code> <code
+                                                            class=plain>(i = 0; i &lt; n-1; i++)</code></div>
+                                                    <div class="line number21 index20 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=plain>{</code></div>
+                                                    <div class="line number22 index21 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code>&nbsp;
+                                                    </div>
+                                                    <div class="line number23 index22 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=comments>// Find the minimum element in</code></div>
+                                                    <div class="line number24 index23 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=comments>// unsorted array</code></div>
+                                                    <div class="line number25 index24 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=plain>min_idx = i;</code></div>
+                                                    <div class="line number26 index25 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class="keyword bold">for</code> <code
+                                                            class=plain>(j = i+1; j &lt; n; j++)</code></div>
+                                                    <div class="line number27 index26 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class="keyword bold">if</code> <code
+                                                            class=plain>(arr[j] &lt; arr[min_idx])</code></div>
+                                                    <div class="line number28 index27 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=plain>min_idx = j;</code></div>
+                                                    <div class="line number29 index28 alt2">&nbsp;</div>
+                                                    <div class="line number30 index29 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=comments>// Swap the found minimum element</code>
+                                                    </div>
+                                                    <div class="line number31 index30 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=comments>// with the first element</code></div>
+                                                    <div class="line number32 index31 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class="keyword bold">if</code><code
+                                                            class=plain>(min_idx!=i)</code></div>
+                                                    <div class="line number33 index32 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=plain>swap(&arr[min_idx], &arr[i]);</code></div>
+                                                    <div class="line number34 index33 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=plain>}</code></div>
+                                                    <div class="line number35 index34 alt2"><code class=plain>}</code>
+                                                    </div>
+                                                    <div class="line number36 index35 alt1">&nbsp;</div>
+                                                    <div class="line number37 index36 alt2"><code
+                                                            class=comments>//Function to print an array</code></div>
+                                                    <div class="line number38 index37 alt1"><code
+                                                            class="keyword bold">void</code> <code
+                                                            class=plain>printArray(</code><code
+                                                            class="color1 bold">int</code> <code
+                                                            class=plain>arr[], </code><code
+                                                            class="color1 bold">int</code> <code
+                                                            class=plain>size)</code></div>
+                                                    <div class="line number39 index38 alt2"><code class=plain>{</code>
+                                                    </div>
+                                                    <div class="line number40 index39 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class="color1 bold">int</code> <code class=plain>i;</code>
+                                                    </div>
+                                                    <div class="line number41 index40 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class="keyword bold">for</code> <code
+                                                            class=plain>(i=0; i &lt; size; i++)</code></div>
+                                                    <div class="line number42 index41 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=plain>cout &lt;&lt; arr[i] &lt;&lt; </code><code
+                                                            class=string>" "</code><code class=plain>;</code></div>
+                                                    <div class="line number43 index42 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=plain>cout &lt;&lt; endl;</code></div>
+                                                    <div class="line number44 index43 alt1"><code class=plain>}</code>
+                                                    </div>
+                                                    <div class="line number45 index44 alt2">&nbsp;</div>
+                                                    <div class="line number46 index45 alt1"><code
+                                                            class=comments>// Driver program to test above functions</code>
+                                                    </div>
+                                                    <div class="line number47 index46 alt2"><code
+                                                            class="color1 bold">int</code> <code
+                                                            class=plain>main()</code></div>
+                                                    <div class="line number48 index47 alt1"><code class=plain>{</code>
+                                                    </div>
+                                                    <div class="line number49 index48 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class="color1 bold">int</code> <code
+                                                            class=plain>arr[] = {64, 25, 12, 22, 11};</code></div>
+                                                    <div class="line number50 index49 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class="color1 bold">int</code> <code
+                                                            class=plain>n = </code><code
+                                                            class="keyword bold">sizeof</code><code
+                                                            class=plain>(arr)/</code><code
+                                                            class="keyword bold">sizeof</code><code
+                                                            class=plain>(arr[0]);</code></div>
+                                                    <div class="line number51 index50 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=plain>selectionSort(arr, n);</code></div>
+                                                    <div class="line number52 index51 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=plain>cout &lt;&lt; </code><code
+                                                            class=string>"Sorted array: \n"</code><code
+                                                            class=plain>;</code></div>
+                                                    <div class="line number53 index52 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=plain>printArray(arr, n);</code></div>
+                                                    <div class="line number54 index53 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class="keyword bold">return</code> <code
+                                                            class=plain>0;</code></div>
+                                                    <div class="line number55 index54 alt2"><code class=plain>}</code>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class=code-editor-container></div>
+                        </p>
+                    </div>
+                    <div class=code-output-container>
+                        <div class=output-block><i id=output-icon title=Output
+                                class="gfg-icon gfg-icon_arrow-right-editor padding-2px code-sidebar-button output-icon"></i>
+                            </p>
+                            <pre class=output-pre></pre>
+                            </p>
+                        </div>
+                        <div class=ide-link-div><i id=copy-url-button title="Copy Generated Ide URL"
+                                class="gfg-icon gfg-icon_copy padding-2px code-sidebar-button copy-url-button"></i></p>
+                            <pre id=ide-url></pre>
+                            </p>
+                        </div>
+                        </p>
+                    </div>
+                </div>
+                <h2 class=tabtitle>C</h2>
+                <div class=tabcontent>
+                    <div class=code-block>
+                        <div class=code-container>
+                            <div id=highlighter_732177 class="syntaxhighlighter nogutter">
+                                <table border=0 cellpadding=0 cellspacing=0>
+                                    <tbody>
+                                        <tr>
+                                            <td class=code>
+                                                <div class=container>
+                                                    <div class="line number1 index0 alt2"><code
+                                                            class=comments>// C program for implementation of selection sort</code>
+                                                    </div>
+                                                    <div class="line number2 index1 alt1"><code
+                                                            class=preprocessor>#include &lt;stdio.h></code></div>
+                                                    <div class="line number3 index2 alt2">&nbsp;</div>
+                                                    <div class="line number4 index3 alt1"><code
+                                                            class="keyword bold">void</code> <code
+                                                            class=plain>swap(</code><code class="color1 bold">int</code>
+                                                        <code class=plain>*xp, </code><code
+                                                            class="color1 bold">int</code> <code class=plain>*yp)</code>
+                                                    </div>
+                                                    <div class="line number5 index4 alt2"><code class=plain>{</code>
+                                                    </div>
+                                                    <div class="line number6 index5 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class="color1 bold">int</code> <code
+                                                            class=plain>temp = *xp;</code></div>
+                                                    <div class="line number7 index6 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=plain>*xp = *yp;</code></div>
+                                                    <div class="line number8 index7 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=plain>*yp = temp;</code></div>
+                                                    <div class="line number9 index8 alt2"><code class=plain>}</code>
+                                                    </div>
+                                                    <div class="line number10 index9 alt1">&nbsp;</div>
+                                                    <div class="line number11 index10 alt2"><code
+                                                            class="keyword bold">void</code> <code
+                                                            class=plain>selectionSort(</code><code
+                                                            class="color1 bold">int</code> <code
+                                                            class=plain>arr[], </code><code
+                                                            class="color1 bold">int</code> <code class=plain>n)</code>
+                                                    </div>
+                                                    <div class="line number12 index11 alt1"><code class=plain>{</code>
+                                                    </div>
+                                                    <div class="line number13 index12 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class="color1 bold">int</code> <code
+                                                            class=plain>i, j, min_idx;</code></div>
+                                                    <div class="line number14 index13 alt1">&nbsp;</div>
+                                                    <div class="line number15 index14 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=comments>// One by one move boundary of unsorted subarray</code>
+                                                    </div>
+                                                    <div class="line number16 index15 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class="keyword bold">for</code> <code
+                                                            class=plain>(i = 0; i &lt; n-1; i++)</code></div>
+                                                    <div class="line number17 index16 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=plain>{</code></div>
+                                                    <div class="line number18 index17 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=comments>// Find the minimum element in unsorted array</code>
+                                                    </div>
+                                                    <div class="line number19 index18 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=plain>min_idx = i;</code></div>
+                                                    <div class="line number20 index19 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class="keyword bold">for</code> <code
+                                                            class=plain>(j = i+1; j &lt; n; j++)</code></div>
+                                                    <div class="line number21 index20 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class="keyword bold">if</code> <code
+                                                            class=plain>(arr[j] &lt; arr[min_idx])</code></div>
+                                                    <div class="line number22 index21 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=plain>min_idx = j;</code></div>
+                                                    <div class="line number23 index22 alt2">&nbsp;</div>
+                                                    <div class="line number24 index23 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=comments>// Swap the found minimum element with the first element</code>
+                                                    </div>
+                                                    <div class="line number25 index24 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class="keyword bold">if</code><code
+                                                            class=plain>(min_idx != i)</code></div>
+                                                    <div class="line number26 index25 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=plain>swap(&arr[min_idx], &arr[i]);</code></div>
+                                                    <div class="line number27 index26 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=plain>}</code></div>
+                                                    <div class="line number28 index27 alt1"><code class=plain>}</code>
+                                                    </div>
+                                                    <div class="line number29 index28 alt2">&nbsp;</div>
+                                                    <div class="line number30 index29 alt1"><code
+                                                            class=comments>/* Function to print an array */</code></div>
+                                                    <div class="line number31 index30 alt2"><code
+                                                            class="keyword bold">void</code> <code
+                                                            class=plain>printArray(</code><code
+                                                            class="color1 bold">int</code> <code
+                                                            class=plain>arr[], </code><code
+                                                            class="color1 bold">int</code> <code
+                                                            class=plain>size)</code></div>
+                                                    <div class="line number32 index31 alt1"><code class=plain>{</code>
+                                                    </div>
+                                                    <div class="line number33 index32 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class="color1 bold">int</code> <code class=plain>i;</code>
+                                                    </div>
+                                                    <div class="line number34 index33 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class="keyword bold">for</code> <code
+                                                            class=plain>(i=0; i &lt; size; i++)</code></div>
+                                                    <div class="line number35 index34 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class="functions bold">printf</code><code
+                                                            class=plain>(</code><code class=string>"%d "</code><code
+                                                            class=plain>, arr[i]);</code></div>
+                                                    <div class="line number36 index35 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class="functions bold">printf</code><code
+                                                            class=plain>(</code><code class=string>"\n"</code><code
+                                                            class=plain>);</code></div>
+                                                    <div class="line number37 index36 alt2"><code class=plain>}</code>
+                                                    </div>
+                                                    <div class="line number38 index37 alt1">&nbsp;</div>
+                                                    <div class="line number39 index38 alt2"><code
+                                                            class=comments>// Driver program to test above functions</code>
+                                                    </div>
+                                                    <div class="line number40 index39 alt1"><code
+                                                            class="color1 bold">int</code> <code
+                                                            class=plain>main()</code></div>
+                                                    <div class="line number41 index40 alt2"><code class=plain>{</code>
+                                                    </div>
+                                                    <div class="line number42 index41 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class="color1 bold">int</code> <code
+                                                            class=plain>arr[] = {64, 25, 12, 22, 11};</code></div>
+                                                    <div class="line number43 index42 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class="color1 bold">int</code> <code
+                                                            class=plain>n = </code><code
+                                                            class="keyword bold">sizeof</code><code
+                                                            class=plain>(arr)/</code><code
+                                                            class="keyword bold">sizeof</code><code
+                                                            class=plain>(arr[0]);</code></div>
+                                                    <div class="line number44 index43 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=plain>selectionSort(arr, n);</code></div>
+                                                    <div class="line number45 index44 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class="functions bold">printf</code><code
+                                                            class=plain>(</code><code
+                                                            class=string>"Sorted array: \n"</code><code
+                                                            class=plain>);</code></div>
+                                                    <div class="line number46 index45 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=plain>printArray(arr, n);</code></div>
+                                                    <div class="line number47 index46 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class="keyword bold">return</code> <code
+                                                            class=plain>0;</code></div>
+                                                    <div class="line number48 index47 alt1"><code class=plain>}</code>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class=code-editor-container></div>
+                        </p>
+                    </div>
+                    <div class=code-output-container>
+                        <div class=output-block><i id=output-icon title=Output
+                                class="gfg-icon gfg-icon_arrow-right-editor padding-2px code-sidebar-button output-icon"></i>
+                            </p>
+                            <pre class=output-pre></pre>
+                            </p>
+                        </div>
+                        <div class=ide-link-div><i id=copy-url-button title="Copy Generated Ide URL"
+                                class="gfg-icon gfg-icon_copy padding-2px code-sidebar-button copy-url-button"></i></p>
+                            <pre id=ide-url></pre>
+                            </p>
+                        </div>
+                        </p>
+                    </div>
+                </div>
+                <h2 class=tabtitle>Java</h2>
+                <div class=tabcontent>
+                    <div class=code-block>
+                        <div class=code-container>
+                            <div id=highlighter_116317 class="syntaxhighlighter nogutter">
+                                <table border=0 cellpadding=0 cellspacing=0>
+                                    <tbody>
+                                        <tr>
+                                            <td class=code>
+                                                <div class=container>
+                                                    <div class="line number1 index0 alt2"><code
+                                                            class=comments>// Java program for implementation of Selection Sort</code>
+                                                    </div>
+                                                    <div class="line number2 index1 alt1"><code
+                                                            class=keyword>class</code> <code
+                                                            class=plain>SelectionSort</code></div>
+                                                    <div class="line number3 index2 alt2"><code class=plain>{</code>
+                                                    </div>
+                                                    <div class="line number4 index3 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=keyword>void</code> <code
+                                                            class=plain>sort(</code><code class=keyword>int</code> <code
+                                                            class=plain>arr[])</code></div>
+                                                    <div class="line number5 index4 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=plain>{</code></div>
+                                                    <div class="line number6 index5 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=keyword>int</code> <code
+                                                            class=plain>n = arr.length;</code></div>
+                                                    <div class="line number7 index6 alt2">&nbsp;</div>
+                                                    <div class="line number8 index7 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=comments>// One by one move boundary of unsorted subarray</code>
+                                                    </div>
+                                                    <div class="line number9 index8 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=keyword>for</code> <code class=plain>(</code><code
+                                                            class=keyword>int</code> <code class=plain>i = </code><code
+                                                            class=value>0</code><code
+                                                            class=plain>; i &lt; n-</code><code
+                                                            class=value>1</code><code class=plain>; i++)</code></div>
+                                                    <div class="line number10 index9 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=plain>{</code></div>
+                                                    <div class="line number11 index10 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=comments>// Find the minimum element in unsorted array</code>
+                                                    </div>
+                                                    <div class="line number12 index11 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=keyword>int</code> <code
+                                                            class=plain>min_idx = i;</code></div>
+                                                    <div class="line number13 index12 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=keyword>for</code> <code class=plain>(</code><code
+                                                            class=keyword>int</code> <code
+                                                            class=plain>j = i+</code><code class=value>1</code><code
+                                                            class=plain>; j &lt; n; j++)</code></div>
+                                                    <div class="line number14 index13 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=keyword>if</code> <code
+                                                            class=plain>(arr[j] &lt; arr[min_idx])</code></div>
+                                                    <div class="line number15 index14 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=plain>min_idx = j;</code></div>
+                                                    <div class="line number16 index15 alt1">&nbsp;</div>
+                                                    <div class="line number17 index16 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=comments>// Swap the found minimum element with the first</code>
+                                                    </div>
+                                                    <div class="line number18 index17 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=comments>// element</code></div>
+                                                    <div class="line number19 index18 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=keyword>int</code> <code
+                                                            class=plain>temp = arr[min_idx];</code></div>
+                                                    <div class="line number20 index19 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=plain>arr[min_idx] = arr[i];</code></div>
+                                                    <div class="line number21 index20 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=plain>arr[i] = temp;</code></div>
+                                                    <div class="line number22 index21 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=plain>}</code></div>
+                                                    <div class="line number23 index22 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=plain>}</code></div>
+                                                    <div class="line number24 index23 alt1">&nbsp;</div>
+                                                    <div class="line number25 index24 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=comments>// Prints the array</code></div>
+                                                    <div class="line number26 index25 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=keyword>void</code> <code
+                                                            class=plain>printArray(</code><code class=keyword>int</code>
+                                                        <code class=plain>arr[])</code></div>
+                                                    <div class="line number27 index26 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=plain>{</code></div>
+                                                    <div class="line number28 index27 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=keyword>int</code> <code
+                                                            class=plain>n = arr.length;</code></div>
+                                                    <div class="line number29 index28 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=keyword>for</code> <code class=plain>(</code><code
+                                                            class=keyword>int</code> <code class=plain>i=</code><code
+                                                            class=value>0</code><code class=plain>; i&lt;n; ++i)</code>
+                                                    </div>
+                                                    <div class="line number30 index29 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=plain>System.out.print(arr[i]+</code><code
+                                                            class=string>" "</code><code class=plain>);</code></div>
+                                                    <div class="line number31 index30 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=plain>System.out.println();</code></div>
+                                                    <div class="line number32 index31 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=plain>}</code></div>
+                                                    <div class="line number33 index32 alt2">&nbsp;</div>
+                                                    <div class="line number34 index33 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=comments>// Driver code to test above</code></div>
+                                                    <div class="line number35 index34 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=keyword>public</code> <code
+                                                            class=keyword>static</code> <code class=keyword>void</code>
+                                                        <code class=plain>main(String args[])</code></div>
+                                                    <div class="line number36 index35 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=plain>{</code></div>
+                                                    <div class="line number37 index36 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=plain>SelectionSort ob = </code><code
+                                                            class=keyword>new</code> <code
+                                                            class=plain>SelectionSort();</code></div>
+                                                    <div class="line number38 index37 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=keyword>int</code> <code
+                                                            class=plain>arr[] = {</code><code class=value>64</code><code
+                                                            class=plain>,</code><code class=value>25</code><code
+                                                            class=plain>,</code><code class=value>12</code><code
+                                                            class=plain>,</code><code class=value>22</code><code
+                                                            class=plain>,</code><code class=value>11</code><code
+                                                            class=plain>};</code></div>
+                                                    <div class="line number39 index38 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=plain>ob.sort(arr);</code></div>
+                                                    <div class="line number40 index39 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=plain>System.out.println(</code><code
+                                                            class=string>"Sorted array"</code><code
+                                                            class=plain>);</code></div>
+                                                    <div class="line number41 index40 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=plain>ob.printArray(arr);</code></div>
+                                                    <div class="line number42 index41 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=plain>}</code></div>
+                                                    <div class="line number43 index42 alt2"><code class=plain>}</code>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class=code-editor-container></div>
+                        </p>
+                    </div>
+                    <div class=code-output-container>
+                        <div class=output-block><i id=output-icon title=Output
+                                class="gfg-icon gfg-icon_arrow-right-editor padding-2px code-sidebar-button output-icon"></i>
+                            </p>
+                            <pre class=output-pre></pre>
+                            </p>
+                        </div>
+                        <div class=ide-link-div><i id=copy-url-button title="Copy Generated Ide URL"
+                                class="gfg-icon gfg-icon_copy padding-2px code-sidebar-button copy-url-button"></i></p>
+                            <pre id=ide-url></pre>
+                            </p>
+                        </div>
+                        </p>
+                    </div>
+                </div>
+            <div class=code-output><strong>Output</strong></p>
+                <pre>Sorted array: 
+11 12 22 25 64 </pre>
+            </div>
+            <h2><u>Complexity Analysis of Selection Sort:</u></h2>
+            <p><strong>Time Complexity:</strong> The time complexity of Selection Sort is O(N<sup>2</sup>) as there are
+                two nested loops:</p>
+            <ul>
+                <li>One loop to select an element of Array one by one = O(N)</li>
+                <li>Another loop to compare that element with every other Array element = O(N)</li>
+            </ul>
+            <p>Therefore overall complexity = O(N) * O(N) = O(N*N) = O(N<sup>2</sup>)</p>
+            <p><strong>Auxiliary Space:</strong> O(1) as the only extra memory used is for temporary variables while
+                swapping two values in Array. The selection sort never makes more than O(N) swaps and can be useful when
+                memory write is a costly operation.&nbsp;</p>
+        </blockquote>
+    </div>
+
+    <%- include('partials/footer'); -%>

@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap');
+.mycolor{
+  background-color: #202020;
+}
+.Hub , h2{
+  letter-spacing: 5px;
+
+}
+
+
+
+.mycard{
+  margin-top:50px;
+}
+.auth-card , .create-post-class{
+  padding:20px;
+
+  max-width: 500px;
+  text-align: center;
+  margin: 100px auto;
+  
+}
+
+body{
+  
+    background-color:#ccffff;
+  
+  
+}
+.navbarColor{
+  background-image: linear-gradient(to right, #33ccff , black);
+  
+}
+.gallery{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+
+}
+
+.imggallery{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  max-width: 33%;
+  border: 1px solid black;
+}
+
+.codersimg{
+  display: flex;
+  max-width: 720px;
+  max-height: 1280px;
+}
+
+#toast-container{
+  top:100px !important;
+  right : 20px !important;
+  left: auto !important;
+  
+}
+
+.item {
+  width: 200px;
+}
+
+body {
+  
+}
+
+.home-card{
+  width: max-content;
+  height : max-content;
+  margin: 26px auto;
+  background-color: 
+}
+
+.material-icons:hover{
+  cursor: pointer;
+}

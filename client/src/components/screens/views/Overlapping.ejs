@@ -1,0 +1,1038 @@
+<%- include('partials/header'); -%>
+
+
+    <div>
+        <blockquote>
+            <p>Dynamic Programming is an algorithmic paradigm that solves a given complex problem by breaking it into
+                subproblems using recursion and storing the results of subproblems to avoid computing the same results
+                again. Following are the two main properties of a problem that suggests that the given problem can be
+                solved using Dynamic programming.</p>
+            <ul>
+                <li><strong>Overlapping Subproblems&nbsp;</strong></li>
+                <li><strong>Optimal Substructure</strong></li>
+            </ul>
+            <p>In this post, we will discuss the first property <strong>Overlapping Subproblems</strong> in detail. The
+                second property of Dynamic programming is discussed in the next post.<br>&nbsp;</p>
+            <h2><strong><u>Overlapping Subproblems:</u></strong><u>&nbsp;</u></h2>
+            <blockquote>
+                <p>Like Divide and Conquer, Dynamic Programming combines solutions to sub-problems. Dynamic Programming
+                    is mainly used when solutions to the same subproblems are needed again and again. In dynamic
+                    programming, computed solutions to subproblems are stored in a table so that these don't have to be
+                    recomputed. So Dynamic Programming is not useful when there are no common (overlapping) subproblems
+                    because there is no point in storing the solutions if they are not needed again. For example, Binary Search doesn't have common
+                    subproblems. If we take the example of following a recursive program for Fibonacci Numbers, there
+                    are many subproblems that are solved again and again.</p>
+            </blockquote>
+            <div class=responsive-tabs>
+                <h2 class=tabtitle>C++</h2>
+                <div class=tabcontent>
+                    <div class=code-block>
+                        <div class=code-container>
+                            <div id=highlighter_914132 class="syntaxhighlighter nogutter">
+                                <table border=0 cellpadding=0 cellspacing=0>
+                                    <tbody>
+                                        <tr>
+                                            <td class=code>
+                                                <div class=container>
+                                                    <div class="line number1 index0 alt2"><code
+                                                            class=preprocessor>#include &lt;iostream></code></div>
+                                                    <div class="line number2 index1 alt1"><code
+                                                            class="keyword bold">using</code> <code
+                                                            class="keyword bold">namespace</code> <code
+                                                            class=plain>std;</code></div>
+                                                    <div class="line number3 index2 alt2">&nbsp;</div>
+                                                    <div class="line number4 index3 alt1"><code
+                                                            class=comments>/* a simple recursive program for Fibonacci numbers */</code>
+                                                    </div>
+                                                    <div class="line number5 index4 alt2"><code
+                                                            class="color1 bold">int</code> <code
+                                                            class=plain>fib(</code><code class="color1 bold">int</code>
+                                                        <code class=plain>n)</code></div>
+                                                    <div class="line number6 index5 alt1"><code class=plain>{</code>
+                                                    </div>
+                                                    <div class="line number7 index6 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class="keyword bold">if</code> <code
+                                                            class=plain>(n &lt;= 1)</code></div>
+                                                    <div class="line number8 index7 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class="keyword bold">return</code> <code
+                                                            class=plain>n;</code></div>
+                                                    <div class="line number9 index8 alt2"><code
+                                                            class="undefined spaces">&nbsp;</code>&nbsp;</div>
+                                                    <div class="line number10 index9 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class="keyword bold">return</code> <code
+                                                            class=plain>fib(n - 1) + fib(n - 2);</code></div>
+                                                    <div class="line number11 index10 alt2"><code class=plain>}</code>
+                                                    </div>
+                                                    <div class="line number12 index11 alt1">&nbsp;</div>
+                                                    <div class="line number13 index12 alt2"><code
+                                                            class="color1 bold">int</code> <code
+                                                            class=plain>main() {</code></div>
+                                                    <div class="line number14 index13 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code>&nbsp;
+                                                    </div>
+                                                    <div class="line number15 index14 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=plain>cout &lt;&lt; fib(7);</code></div>
+                                                    <div class="line number16 index15 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code>&nbsp;
+                                                    </div>
+                                                    <div class="line number17 index16 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class="keyword bold">return</code> <code
+                                                            class=plain>0;</code></div>
+                                                    <div class="line number18 index17 alt1"><code class=plain>}</code>
+                                                    </div>
+                                                    <div class="line number19 index18 alt2">&nbsp;</div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class=code-editor-container></div>
+                        </p>
+                    </div>
+                    <div class=code-output-container>
+                        <div class=output-block><i id=output-icon title=Output
+                                class="gfg-icon gfg-icon_arrow-right-editor padding-2px code-sidebar-button output-icon"></i>
+                            </p>
+                            <pre class=output-pre></pre>
+                            </p>
+                        </div>
+                        <div class=ide-link-div><i id=copy-url-button title="Copy Generated Ide URL"
+                                class="gfg-icon gfg-icon_copy padding-2px code-sidebar-button copy-url-button"></i></p>
+                            <pre id=ide-url></pre>
+                            </p>
+                        </div>
+                        </p>
+                    </div>
+                </div>
+                <h2 class=tabtitle>C</h2>
+                <div class=tabcontent>
+                    <div class=code-block>
+                        <div class=code-container>
+                            <div id=highlighter_84267 class="syntaxhighlighter nogutter">
+                                <table border=0 cellpadding=0 cellspacing=0>
+                                    <tbody>
+                                        <tr>
+                                            <td class=code>
+                                                <div class=container>
+                                                    <div class="line number1 index0 alt2"><code
+                                                            class=comments>/* a simple recursive program for Fibonacci numbers */</code>
+                                                    </div>
+                                                    <div class="line number2 index1 alt1"><code
+                                                            class="color1 bold">int</code> <code
+                                                            class=plain>fib(</code><code class="color1 bold">int</code>
+                                                        <code class=plain>n)</code></div>
+                                                    <div class="line number3 index2 alt2"><code class=plain>{</code>
+                                                    </div>
+                                                    <div class="line number4 index3 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class="keyword bold">if</code> <code
+                                                            class=plain>(n &lt;= 1)</code></div>
+                                                    <div class="line number5 index4 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class="keyword bold">return</code> <code
+                                                            class=plain>n;</code></div>
+                                                    <div class="line number6 index5 alt1">&nbsp;</div>
+                                                    <div class="line number7 index6 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class="keyword bold">return</code> <code
+                                                            class=plain>fib(n - 1) + fib(n - 2);</code></div>
+                                                    <div class="line number8 index7 alt1"><code class=plain>}</code>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class=code-editor-container></div>
+                        </p>
+                    </div>
+                    <div class=code-output-container>
+                        <div class=output-block><i id=output-icon title=Output
+                                class="gfg-icon gfg-icon_arrow-right-editor padding-2px code-sidebar-button output-icon"></i>
+                            </p>
+                            <pre class=output-pre></pre>
+                            </p>
+                        </div>
+                        <div class=ide-link-div><i id=copy-url-button title="Copy Generated Ide URL"
+                                class="gfg-icon gfg-icon_copy padding-2px code-sidebar-button copy-url-button"></i></p>
+                            <pre id=ide-url></pre>
+                            </p>
+                        </div>
+                        </p>
+                    </div>
+                </div>
+                <h2 class=tabtitle>Java</h2>
+                <div class=tabcontent>
+                    <div class=code-block>
+                        <div class=code-container>
+                            <div id=highlighter_943789 class="syntaxhighlighter nogutter">
+                                <table border=0 cellpadding=0 cellspacing=0>
+                                    <tbody>
+                                        <tr>
+                                            <td class=code>
+                                                <div class=container>
+                                                    <div class="line number1 index0 alt2"><code
+                                                            class=comments>/*package whatever //do not write package name here */</code>
+                                                    </div>
+                                                    <div class="line number2 index1 alt1"><code
+                                                            class=comments>/* a simple recursive program for Fibonacci numbers */</code>
+                                                    </div>
+                                                    <div class="line number3 index2 alt2"><code
+                                                            class=keyword>static</code> <code class=keyword>int</code>
+                                                        <code class=plain>fib(</code><code class=keyword>int</code>
+                                                        <code class=plain>n)</code></div>
+                                                    <div class="line number4 index3 alt1"><code class=plain>{</code>
+                                                    </div>
+                                                    <div class="line number5 index4 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=keyword>if</code> <code
+                                                            class=plain>(n &lt;= </code><code class=value>1</code><code
+                                                            class=plain>)</code></div>
+                                                    <div class="line number6 index5 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=keyword>return</code> <code class=plain>n;</code>
+                                                    </div>
+                                                    <div class="line number7 index6 alt2">&nbsp;</div>
+                                                    <div class="line number8 index7 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=keyword>return</code> <code
+                                                            class=plain>fib(n - </code><code class=value>1</code><code
+                                                            class=plain>) + fib(n - </code><code
+                                                            class=value>2</code><code class=plain>);</code></div>
+                                                    <div class="line number9 index8 alt2"><code class=plain>}</code>
+                                                    </div>
+                                                    <div class="line number10 index9 alt1">&nbsp;</div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class=code-editor-container></div>
+                        </p>
+                    </div>
+                    <div class=code-output-container>
+                        <div class=output-block><i id=output-icon title=Output
+                                class="gfg-icon gfg-icon_arrow-right-editor padding-2px code-sidebar-button output-icon"></i>
+                            </p>
+                            <pre class=output-pre></pre>
+                            </p>
+                        </div>
+                        <div class=ide-link-div><i id=copy-url-button title="Copy Generated Ide URL"
+                                class="gfg-icon gfg-icon_copy padding-2px code-sidebar-button copy-url-button"></i></p>
+                            <pre id=ide-url></pre>
+                            </p>
+                        </div>
+                        </p>
+                    </div>
+                </div>
+            <div class=code-output><strong>Output</strong></p>
+                <pre>13</pre>
+            </div>
+            <p><strong>Time Complexity: </strong>O(2<sup>N</sup>) &nbsp;<br><strong>Auxiliary Space: </strong>O(1)</p>
+            <h3><strong><u>Illustration of Recursion tree for the execution of fib(5) :</u></strong> &nbsp; &nbsp;
+                &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</h3>
+            <div style=width:810px class="wp-caption alignnone"><img
+                    src=https://media.geeksforgeeks.org/wp-content/uploads/20220815013010/fibonaci.jpg
+                    srcset=https://media.geeksforgeeks.org/wp-content/uploads/20220815013010/fibonaci.jpg, sizes=100vw
+                    width=326>
+                <p class=wp-caption-text>Recursion tree for the execution of fib(5)&nbsp;</p>
+            </div>
+            <p>We can see that the function fib(3) is being called 2 times. If we would have stored the value of fib(3),
+                then instead of computing it again, we could have reused the old stored value. There are following two
+                different ways to store the values so that these values can be reused:&nbsp;</p>
+            <ul>
+                <li>Memoization (Top Down)&nbsp;</li>
+                <li>Tabulation (Bottom Up)</li>
+            </ul>
+            <h3><strong><u>Memoization (Top Down):</u>&nbsp;</strong></h3>
+            <blockquote>
+                <p>The memoized program for a problem is similar to the recursive version with a small modification that
+                    looks into a lookup table before computing solutions. We initialize a lookup array with all initial
+                    values as NIL. Whenever we need the solution to a subproblem, we first look into the lookup table.
+                    If the precomputed value is there then we return that value, otherwise, we calculate the value and
+                    put the result in the lookup table so that it can be reused later.</p>
+            </blockquote>
+            <p>Following is the memoized version for the nth Fibonacci Number.&nbsp;</p>
+            <div class=responsive-tabs>
+                <h2 class=tabtitle>C++</h2>
+                <div class=tabcontent>
+                    <div class=code-block>
+                        <div class=code-container>
+                            <div id=highlighter_417772 class="syntaxhighlighter nogutter">
+                                <table border=0 cellpadding=0 cellspacing=0>
+                                    <tbody>
+                                        <tr>
+                                            <td class=code>
+                                                <div class=container>
+                                                    <div class="line number1 index0 alt2"><code
+                                                            class=comments>/* C++ program for Memoized version</code>
+                                                    </div>
+                                                    <div class="line number2 index1 alt1"><code
+                                                            class=comments>for nth Fibonacci number */</code></div>
+                                                    <div class="line number3 index2 alt2"><code
+                                                            class=preprocessor>#include &lt;bits/stdc++.h></code></div>
+                                                    <div class="line number4 index3 alt1"><code
+                                                            class="keyword bold">using</code> <code
+                                                            class="keyword bold">namespace</code> <code
+                                                            class=plain>std;</code></div>
+                                                    <div class="line number5 index4 alt2"><code
+                                                            class=preprocessor>#define NIL -1</code></div>
+                                                    <div class="line number6 index5 alt1"><code
+                                                            class=preprocessor>#define MAX 100</code></div>
+                                                    <div class="line number7 index6 alt2">&nbsp;</div>
+                                                    <div class="line number8 index7 alt1"><code
+                                                            class="color1 bold">int</code> <code
+                                                            class=plain>lookup[MAX];</code></div>
+                                                    <div class="line number9 index8 alt2">&nbsp;</div>
+                                                    <div class="line number10 index9 alt1"><code
+                                                            class=comments>/* Function to initialize NIL</code></div>
+                                                    <div class="line number11 index10 alt2"><code
+                                                            class=comments>values in lookup table */</code></div>
+                                                    <div class="line number12 index11 alt1"><code
+                                                            class="keyword bold">void</code> <code
+                                                            class=plain>_initialize()</code></div>
+                                                    <div class="line number13 index12 alt2"><code class=plain>{</code>
+                                                    </div>
+                                                    <div class="line number14 index13 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class="color1 bold">int</code> <code class=plain>i;</code>
+                                                    </div>
+                                                    <div class="line number15 index14 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class="keyword bold">for</code> <code
+                                                            class=plain>(i = 0; i &lt; MAX; i++)</code></div>
+                                                    <div class="line number16 index15 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=plain>lookup[i] = NIL;</code></div>
+                                                    <div class="line number17 index16 alt2"><code class=plain>}</code>
+                                                    </div>
+                                                    <div class="line number18 index17 alt1">&nbsp;</div>
+                                                    <div class="line number19 index18 alt2"><code
+                                                            class=comments>/* function for nth Fibonacci number */</code>
+                                                    </div>
+                                                    <div class="line number20 index19 alt1"><code
+                                                            class="color1 bold">int</code> <code
+                                                            class=plain>fib(</code><code class="color1 bold">int</code>
+                                                        <code class=plain>n)</code></div>
+                                                    <div class="line number21 index20 alt2"><code class=plain>{</code>
+                                                    </div>
+                                                    <div class="line number22 index21 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class="keyword bold">if</code> <code
+                                                            class=plain>(lookup[n] == NIL) {</code></div>
+                                                    <div class="line number23 index22 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class="keyword bold">if</code> <code
+                                                            class=plain>(n &lt;= 1)</code></div>
+                                                    <div class="line number24 index23 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=plain>lookup[n] = n;</code></div>
+                                                    <div class="line number25 index24 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class="keyword bold">else</code></div>
+                                                    <div class="line number26 index25 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=plain>lookup[n] = fib(n - 1) + fib(n - 2);</code>
+                                                    </div>
+                                                    <div class="line number27 index26 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=plain>}</code></div>
+                                                    <div class="line number28 index27 alt1">&nbsp;</div>
+                                                    <div class="line number29 index28 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class="keyword bold">return</code> <code
+                                                            class=plain>lookup[n];</code></div>
+                                                    <div class="line number30 index29 alt1"><code class=plain>}</code>
+                                                    </div>
+                                                    <div class="line number31 index30 alt2">&nbsp;</div>
+                                                    <div class="line number32 index31 alt1"><code
+                                                            class=comments>// Driver code</code></div>
+                                                    <div class="line number33 index32 alt2"><code
+                                                            class="color1 bold">int</code> <code
+                                                            class=plain>main()</code></div>
+                                                    <div class="line number34 index33 alt1"><code class=plain>{</code>
+                                                    </div>
+                                                    <div class="line number35 index34 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class="color1 bold">int</code> <code
+                                                            class=plain>n = 40;</code></div>
+                                                    <div class="line number36 index35 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=plain>_initialize();</code></div>
+                                                    <div class="line number37 index36 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=plain>cout &lt;&lt; </code><code
+                                                            class=string>"Fibonacci number is "</code> <code
+                                                            class=plain>&lt;&lt; fib(n);</code></div>
+                                                    <div class="line number38 index37 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class="keyword bold">return</code> <code
+                                                            class=plain>0;</code></div>
+                                                    <div class="line number39 index38 alt2"><code class=plain>}</code>
+                                                    </div>
+                                                    <div class="line number40 index39 alt1">&nbsp;</div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class=code-editor-container></div>
+                        </p>
+                    </div>
+                    <div class=code-output-container>
+                        <div class=output-block><i id=output-icon title=Output
+                                class="gfg-icon gfg-icon_arrow-right-editor padding-2px code-sidebar-button output-icon"></i>
+                            </p>
+                            <pre class=output-pre></pre>
+                            </p>
+                        </div>
+                        <div class=ide-link-div><i id=copy-url-button title="Copy Generated Ide URL"
+                                class="gfg-icon gfg-icon_copy padding-2px code-sidebar-button copy-url-button"></i></p>
+                            <pre id=ide-url></pre>
+                            </p>
+                        </div>
+                        </p>
+                    </div>
+                </div>
+                <h2 class=tabtitle>C</h2>
+                <div class=tabcontent>
+                    <div class=code-block>
+                        <div class=code-container>
+                            <div id=highlighter_699745 class="syntaxhighlighter nogutter">
+                                <table border=0 cellpadding=0 cellspacing=0>
+                                    <tbody>
+                                        <tr>
+                                            <td class=code>
+                                                <div class=container>
+                                                    <div class="line number1 index0 alt2"><code
+                                                            class=comments>/* C program for Memoized version for nth Fibonacci number</code>
+                                                    </div>
+                                                    <div class="line number2 index1 alt1"><code
+                                                            class="undefined spaces">&nbsp;</code><code
+                                                            class=comments>*/</code></div>
+                                                    <div class="line number3 index2 alt2"><code
+                                                            class=preprocessor>#include &lt;stdio.h></code></div>
+                                                    <div class="line number4 index3 alt1"><code
+                                                            class=preprocessor>#define NIL -1</code></div>
+                                                    <div class="line number5 index4 alt2"><code
+                                                            class=preprocessor>#define MAX 100</code></div>
+                                                    <div class="line number6 index5 alt1">&nbsp;</div>
+                                                    <div class="line number7 index6 alt2"><code
+                                                            class="color1 bold">int</code> <code
+                                                            class=plain>lookup[MAX];</code></div>
+                                                    <div class="line number8 index7 alt1">&nbsp;</div>
+                                                    <div class="line number9 index8 alt2"><code
+                                                            class=comments>/* Function to initialize NIL values in lookup table */</code>
+                                                    </div>
+                                                    <div class="line number10 index9 alt1"><code
+                                                            class="keyword bold">void</code> <code
+                                                            class=plain>_initialize()</code></div>
+                                                    <div class="line number11 index10 alt2"><code class=plain>{</code>
+                                                    </div>
+                                                    <div class="line number12 index11 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class="color1 bold">int</code> <code class=plain>i;</code>
+                                                    </div>
+                                                    <div class="line number13 index12 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class="keyword bold">for</code> <code
+                                                            class=plain>(i = 0; i &lt; MAX; i++)</code></div>
+                                                    <div class="line number14 index13 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=plain>lookup[i] = NIL;</code></div>
+                                                    <div class="line number15 index14 alt2"><code class=plain>}</code>
+                                                    </div>
+                                                    <div class="line number16 index15 alt1">&nbsp;</div>
+                                                    <div class="line number17 index16 alt2"><code
+                                                            class=comments>/* function for nth Fibonacci number */</code>
+                                                    </div>
+                                                    <div class="line number18 index17 alt1"><code
+                                                            class="color1 bold">int</code> <code
+                                                            class=plain>fib(</code><code class="color1 bold">int</code>
+                                                        <code class=plain>n)</code></div>
+                                                    <div class="line number19 index18 alt2"><code class=plain>{</code>
+                                                    </div>
+                                                    <div class="line number20 index19 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class="keyword bold">if</code> <code
+                                                            class=plain>(lookup[n] == NIL) {</code></div>
+                                                    <div class="line number21 index20 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class="keyword bold">if</code> <code
+                                                            class=plain>(n &lt;= 1)</code></div>
+                                                    <div class="line number22 index21 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=plain>lookup[n] = n;</code></div>
+                                                    <div class="line number23 index22 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class="keyword bold">else</code></div>
+                                                    <div class="line number24 index23 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=plain>lookup[n] = fib(n - 1) + fib(n - 2);</code>
+                                                    </div>
+                                                    <div class="line number25 index24 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=plain>}</code></div>
+                                                    <div class="line number26 index25 alt1">&nbsp;</div>
+                                                    <div class="line number27 index26 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class="keyword bold">return</code> <code
+                                                            class=plain>lookup[n];</code></div>
+                                                    <div class="line number28 index27 alt1"><code class=plain>}</code>
+                                                    </div>
+                                                    <div class="line number29 index28 alt2">&nbsp;</div>
+                                                    <div class="line number30 index29 alt1"><code
+                                                            class="color1 bold">int</code> <code
+                                                            class=plain>main()</code></div>
+                                                    <div class="line number31 index30 alt2"><code class=plain>{</code>
+                                                    </div>
+                                                    <div class="line number32 index31 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class="color1 bold">int</code> <code
+                                                            class=plain>n = 40;</code></div>
+                                                    <div class="line number33 index32 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=plain>_initialize();</code></div>
+                                                    <div class="line number34 index33 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class="functions bold">printf</code><code
+                                                            class=plain>(</code><code
+                                                            class=string>"Fibonacci number is %d "</code><code
+                                                            class=plain>, fib(n));</code></div>
+                                                    <div class="line number35 index34 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class="keyword bold">return</code> <code
+                                                            class=plain>0;</code></div>
+                                                    <div class="line number36 index35 alt1"><code class=plain>}</code>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class=code-editor-container></div>
+                        </p>
+                    </div>
+                    <div class=code-output-container>
+                        <div class=output-block><i id=output-icon title=Output
+                                class="gfg-icon gfg-icon_arrow-right-editor padding-2px code-sidebar-button output-icon"></i>
+                            </p>
+                            <pre class=output-pre></pre>
+                            </p>
+                        </div>
+                        <div class=ide-link-div><i id=copy-url-button title="Copy Generated Ide URL"
+                                class="gfg-icon gfg-icon_copy padding-2px code-sidebar-button copy-url-button"></i></p>
+                            <pre id=ide-url></pre>
+                            </p>
+                        </div>
+                        </p>
+                    </div>
+                </div>
+                <h2 class=tabtitle>Java</h2>
+                <div class=tabcontent>
+                    <div class=code-block>
+                        <div class=code-container>
+                            <div id=highlighter_669305 class="syntaxhighlighter nogutter">
+                                <table border=0 cellpadding=0 cellspacing=0>
+                                    <tbody>
+                                        <tr>
+                                            <td class=code>
+                                                <div class=container>
+                                                    <div class="line number1 index0 alt2"><code
+                                                            class=comments>/* Java program for Memoized version */</code>
+                                                    </div>
+                                                    <div class="line number2 index1 alt1"><code
+                                                            class=keyword>public</code> <code class=keyword>class</code>
+                                                        <code class=plain>Fibonacci {</code></div>
+                                                    <div class="line number3 index2 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=keyword>final</code> <code class=keyword>int</code>
+                                                        <code class=plain>MAX = </code><code class=value>100</code><code
+                                                            class=plain>;</code></div>
+                                                    <div class="line number4 index3 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=keyword>final</code> <code class=keyword>int</code>
+                                                        <code class=plain>NIL = -</code><code class=value>1</code><code
+                                                            class=plain>;</code></div>
+                                                    <div class="line number5 index4 alt2">&nbsp;</div>
+                                                    <div class="line number6 index5 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=keyword>int</code> <code
+                                                            class=plain>lookup[] = </code><code class=keyword>new</code>
+                                                        <code class=keyword>int</code><code class=plain>[MAX];</code>
+                                                    </div>
+                                                    <div class="line number7 index6 alt2">&nbsp;</div>
+                                                    <div class="line number8 index7 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=comments>/* Function to initialize NIL values in lookup table */</code>
+                                                    </div>
+                                                    <div class="line number9 index8 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=keyword>void</code> <code
+                                                            class=plain>_initialize()</code></div>
+                                                    <div class="line number10 index9 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=plain>{</code></div>
+                                                    <div class="line number11 index10 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=keyword>for</code> <code class=plain>(</code><code
+                                                            class=keyword>int</code> <code class=plain>i = </code><code
+                                                            class=value>0</code><code
+                                                            class=plain>; i &lt; MAX; i++)</code></div>
+                                                    <div class="line number12 index11 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=plain>lookup[i] = NIL;</code></div>
+                                                    <div class="line number13 index12 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=plain>}</code></div>
+                                                    <div class="line number14 index13 alt1">&nbsp;</div>
+                                                    <div class="line number15 index14 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=comments>/* function for nth Fibonacci number */</code>
+                                                    </div>
+                                                    <div class="line number16 index15 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=keyword>int</code> <code class=plain>fib(</code><code
+                                                            class=keyword>int</code> <code class=plain>n)</code></div>
+                                                    <div class="line number17 index16 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=plain>{</code></div>
+                                                    <div class="line number18 index17 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=keyword>if</code> <code
+                                                            class=plain>(lookup[n] == NIL) {</code></div>
+                                                    <div class="line number19 index18 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=keyword>if</code> <code
+                                                            class=plain>(n &lt;= </code><code class=value>1</code><code
+                                                            class=plain>)</code></div>
+                                                    <div class="line number20 index19 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=plain>lookup[n] = n;</code></div>
+                                                    <div class="line number21 index20 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=keyword>else</code></div>
+                                                    <div class="line number22 index21 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=plain>lookup[n] = fib(n - </code><code
+                                                            class=value>1</code><code
+                                                            class=plain>) + fib(n - </code><code
+                                                            class=value>2</code><code class=plain>);</code></div>
+                                                    <div class="line number23 index22 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=plain>}</code></div>
+                                                    <div class="line number24 index23 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=keyword>return</code> <code
+                                                            class=plain>lookup[n];</code></div>
+                                                    <div class="line number25 index24 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=plain>}</code></div>
+                                                    <div class="line number26 index25 alt1">&nbsp;</div>
+                                                    <div class="line number27 index26 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=keyword>public</code> <code
+                                                            class=keyword>static</code> <code class=keyword>void</code>
+                                                        <code class=plain>main(String[] args)</code></div>
+                                                    <div class="line number28 index27 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=plain>{</code></div>
+                                                    <div class="line number29 index28 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=plain>Fibonacci f = </code><code
+                                                            class=keyword>new</code> <code
+                                                            class=plain>Fibonacci();</code></div>
+                                                    <div class="line number30 index29 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=keyword>int</code> <code class=plain>n = </code><code
+                                                            class=value>40</code><code class=plain>;</code></div>
+                                                    <div class="line number31 index30 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=plain>f._initialize();</code></div>
+                                                    <div class="line number32 index31 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=plain>System.out.println(</code><code
+                                                            class=string>"Fibonacci number is"</code></div>
+                                                    <div class="line number33 index32 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=plain>+ </code><code class=string>" "</code> <code
+                                                            class=plain>+ f.fib(n));</code></div>
+                                                    <div class="line number34 index33 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=plain>}</code></div>
+                                                    <div class="line number35 index34 alt2"><code class=plain>}</code>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class=code-editor-container></div>
+                        </p>
+                    </div>
+                    <div class=code-output-container>
+                        <div class=output-block><i id=output-icon title=Output
+                                class="gfg-icon gfg-icon_arrow-right-editor padding-2px code-sidebar-button output-icon"></i>
+                            </p>
+                            <pre class=output-pre></pre>
+                            </p>
+                        </div>
+                        <div class=ide-link-div><i id=copy-url-button title="Copy Generated Ide URL"
+                                class="gfg-icon gfg-icon_copy padding-2px code-sidebar-button copy-url-button"></i></p>
+                            <pre id=ide-url></pre>
+                            </p>
+                        </div>
+                        </p>
+                    </div>
+                </div>
+            <div class=code-output><strong>Output</strong></p>
+                <pre>Fibonacci number is 102334155</pre>
+            </div>
+            <h3><strong><u>Tabulation (Bottom Up):</u>&nbsp;</strong></h3>
+            <blockquote>
+                <p>The tabulated program for a given problem builds a table in a bottom-up fashion and returns the last
+                    entry from the table. For example, for the same Fibonacci number, we first calculate fib(0) then
+                    fib(1) then fib(2) then fib(3), and so on. So literally, we are building the solutions to
+                    subproblems bottom-up.&nbsp;</p>
+            </blockquote>
+            <p>Following is the tabulated version for the nth Fibonacci Number.</p>
+            <div class=responsive-tabs>
+                <h2 class=tabtitle>C</h2>
+                <div class=tabcontent>
+                    <div class=code-block>
+                        <div class=code-container>
+                            <div id=highlighter_469088 class="syntaxhighlighter nogutter">
+                                <table border=0 cellpadding=0 cellspacing=0>
+                                    <tbody>
+                                        <tr>
+                                            <td class=code>
+                                                <div class=container>
+                                                    <div class="line number1 index0 alt2"><code
+                                                            class=comments>/* C program for Tabulated version */</code>
+                                                    </div>
+                                                    <div class="line number2 index1 alt1"><code
+                                                            class=preprocessor>#include &lt;stdio.h></code></div>
+                                                    <div class="line number3 index2 alt2"><code
+                                                            class="color1 bold">int</code> <code
+                                                            class=plain>fib(</code><code class="color1 bold">int</code>
+                                                        <code class=plain>n)</code></div>
+                                                    <div class="line number4 index3 alt1"><code class=plain>{</code>
+                                                    </div>
+                                                    <div class="line number5 index4 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class="color1 bold">int</code> <code
+                                                            class=plain>f[n + 1];</code></div>
+                                                    <div class="line number6 index5 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class="color1 bold">int</code> <code class=plain>i;</code>
+                                                    </div>
+                                                    <div class="line number7 index6 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=plain>f[0] = 0;</code></div>
+                                                    <div class="line number8 index7 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=plain>f[1] = 1;</code></div>
+                                                    <div class="line number9 index8 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class="keyword bold">for</code> <code
+                                                            class=plain>(i = 2; i &lt;= n; i++)</code></div>
+                                                    <div class="line number10 index9 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=plain>f[i] = f[i - 1] + f[i - 2];</code></div>
+                                                    <div class="line number11 index10 alt2">&nbsp;</div>
+                                                    <div class="line number12 index11 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class="keyword bold">return</code> <code
+                                                            class=plain>f[n];</code></div>
+                                                    <div class="line number13 index12 alt2"><code class=plain>}</code>
+                                                    </div>
+                                                    <div class="line number14 index13 alt1">&nbsp;</div>
+                                                    <div class="line number15 index14 alt2"><code
+                                                            class="color1 bold">int</code> <code
+                                                            class=plain>main()</code></div>
+                                                    <div class="line number16 index15 alt1"><code class=plain>{</code>
+                                                    </div>
+                                                    <div class="line number17 index16 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class="color1 bold">int</code> <code
+                                                            class=plain>n = 9;</code></div>
+                                                    <div class="line number18 index17 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class="functions bold">printf</code><code
+                                                            class=plain>(</code><code
+                                                            class=string>"Fibonacci number is %d "</code><code
+                                                            class=plain>, fib(n));</code></div>
+                                                    <div class="line number19 index18 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class="keyword bold">return</code> <code
+                                                            class=plain>0;</code></div>
+                                                    <div class="line number20 index19 alt1"><code class=plain>}</code>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class=code-editor-container></div>
+                        </p>
+                    </div>
+                    <div class=code-output-container>
+                        <div class=output-block><i id=output-icon title=Output
+                                class="gfg-icon gfg-icon_arrow-right-editor padding-2px code-sidebar-button output-icon"></i>
+                            </p>
+                            <pre class=output-pre></pre>
+                            </p>
+                        </div>
+                        <div class=ide-link-div><i id=copy-url-button title="Copy Generated Ide URL"
+                                class="gfg-icon gfg-icon_copy padding-2px code-sidebar-button copy-url-button"></i></p>
+                            <pre id=ide-url></pre>
+                            </p>
+                        </div>
+                        </p>
+                    </div>
+                </div>
+                <h2 class=tabtitle>Java</h2>
+                <div class=tabcontent>
+                    <div class=code-block>
+                        <div class=code-container>
+                            <div id=highlighter_241897 class="syntaxhighlighter nogutter">
+                                <table border=0 cellpadding=0 cellspacing=0>
+                                    <tbody>
+                                        <tr>
+                                            <td class=code>
+                                                <div class=container>
+                                                    <div class="line number1 index0 alt2"><code
+                                                            class=comments>/* Java program for Tabulated version */</code>
+                                                    </div>
+                                                    <div class="line number2 index1 alt1"><code
+                                                            class=keyword>public</code> <code class=keyword>class</code>
+                                                        <code class=plain>Fibonacci {</code></div>
+                                                    <div class="line number3 index2 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=keyword>int</code> <code class=plain>fib(</code><code
+                                                            class=keyword>int</code> <code class=plain>n)</code></div>
+                                                    <div class="line number4 index3 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=plain>{</code></div>
+                                                    <div class="line number5 index4 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=keyword>int</code> <code
+                                                            class=plain>f[] = </code><code class=keyword>new</code>
+                                                        <code class=keyword>int</code><code
+                                                            class=plain>[n + </code><code class=value>1</code><code
+                                                            class=plain>];</code></div>
+                                                    <div class="line number6 index5 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=plain>f[</code><code class=value>0</code><code
+                                                            class=plain>] = </code><code class=value>0</code><code
+                                                            class=plain>;</code></div>
+                                                    <div class="line number7 index6 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=plain>f[</code><code class=value>1</code><code
+                                                            class=plain>] = </code><code class=value>1</code><code
+                                                            class=plain>;</code></div>
+                                                    <div class="line number8 index7 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=keyword>for</code> <code class=plain>(</code><code
+                                                            class=keyword>int</code> <code class=plain>i = </code><code
+                                                            class=value>2</code><code
+                                                            class=plain>; i &lt;= n; i++)</code></div>
+                                                    <div class="line number9 index8 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=plain>f[i] = f[i - </code><code
+                                                            class=value>1</code><code class=plain>] + f[i - </code><code
+                                                            class=value>2</code><code class=plain>];</code></div>
+                                                    <div class="line number10 index9 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=keyword>return</code> <code class=plain>f[n];</code>
+                                                    </div>
+                                                    <div class="line number11 index10 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=plain>}</code></div>
+                                                    <div class="line number12 index11 alt1">&nbsp;</div>
+                                                    <div class="line number13 index12 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=keyword>public</code> <code
+                                                            class=keyword>static</code> <code class=keyword>void</code>
+                                                        <code class=plain>main(String[] args)</code></div>
+                                                    <div class="line number14 index13 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=plain>{</code></div>
+                                                    <div class="line number15 index14 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=plain>Fibonacci f = </code><code
+                                                            class=keyword>new</code> <code
+                                                            class=plain>Fibonacci();</code></div>
+                                                    <div class="line number16 index15 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=keyword>int</code> <code class=plain>n = </code><code
+                                                            class=value>9</code><code class=plain>;</code></div>
+                                                    <div class="line number17 index16 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=plain>System.out.println(</code><code
+                                                            class=string>"Fibonacci number is"</code></div>
+                                                    <div class="line number18 index17 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=plain>+ </code><code class=string>" "</code> <code
+                                                            class=plain>+ f.fib(n));</code></div>
+                                                    <div class="line number19 index18 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=plain>}</code></div>
+                                                    <div class="line number20 index19 alt1"><code class=plain>}</code>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class=code-editor-container></div>
+                        </p>
+                    </div>
+                    <div class=code-output-container>
+                        <div class=output-block><i id=output-icon title=Output
+                                class="gfg-icon gfg-icon_arrow-right-editor padding-2px code-sidebar-button output-icon"></i>
+                            </p>
+                            <pre class=output-pre></pre>
+                            </p>
+                        </div>
+                        <div class=ide-link-div><i id=copy-url-button title="Copy Generated Ide URL"
+                                class="gfg-icon gfg-icon_copy padding-2px code-sidebar-button copy-url-button"></i></p>
+                            <pre id=ide-url></pre>
+                            </p>
+                        </div>
+                        </p>
+                    </div>
+                </div>
+                <h2 class=tabtitle>C++</h2>
+                <div class=tabcontent>
+                    <div class=code-block>
+                        <div class=code-container>
+                            <div id=highlighter_739066 class="syntaxhighlighter nogutter">
+                                <table border=0 cellpadding=0 cellspacing=0>
+                                    <tbody>
+                                        <tr>
+                                            <td class=code>
+                                                <div class=container>
+                                                    <div class="line number1 index0 alt2"><code
+                                                            class=comments>/* C++ program for Tabulated version */</code>
+                                                    </div>
+                                                    <div class="line number2 index1 alt1">&nbsp;</div>
+                                                    <div class="line number3 index2 alt2"><code
+                                                            class=preprocessor>#include &lt;iostream></code></div>
+                                                    <div class="line number4 index3 alt1"><code
+                                                            class="keyword bold">using</code> <code
+                                                            class="keyword bold">namespace</code> <code
+                                                            class=plain>std;</code></div>
+                                                    <div class="line number5 index4 alt2">&nbsp;</div>
+                                                    <div class="line number6 index5 alt1"><code
+                                                            class="color1 bold">int</code> <code
+                                                            class=plain>fib(</code><code class="color1 bold">int</code>
+                                                        <code class=plain>n)</code></div>
+                                                    <div class="line number7 index6 alt2"><code class=plain>{</code>
+                                                    </div>
+                                                    <div class="line number8 index7 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class="color1 bold">int</code> <code
+                                                            class=plain>f[n + 1];</code></div>
+                                                    <div class="line number9 index8 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class="color1 bold">int</code> <code class=plain>i;</code>
+                                                    </div>
+                                                    <div class="line number10 index9 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=plain>f[0] = 0;</code></div>
+                                                    <div class="line number11 index10 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=plain>f[1] = 1;</code></div>
+                                                    <div class="line number12 index11 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class="keyword bold">for</code> <code
+                                                            class=plain>(i = 2; i &lt;= n; i++)</code></div>
+                                                    <div class="line number13 index12 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class=plain>f[i] = f[i - 1] + f[i - 2];</code></div>
+                                                    <div class="line number14 index13 alt1">&nbsp;</div>
+                                                    <div class="line number15 index14 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class="keyword bold">return</code> <code
+                                                            class=plain>f[n];</code></div>
+                                                    <div class="line number16 index15 alt1"><code class=plain>}</code>
+                                                    </div>
+                                                    <div class="line number17 index16 alt2">&nbsp;</div>
+                                                    <div class="line number18 index17 alt1"><code
+                                                            class="color1 bold">int</code> <code
+                                                            class=plain>main()</code></div>
+                                                    <div class="line number19 index18 alt2"><code class=plain>{</code>
+                                                    </div>
+                                                    <div class="line number20 index19 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class="color1 bold">int</code> <code
+                                                            class=plain>n = 9;</code></div>
+                                                    <div class="line number21 index20 alt2"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class="functions bold">printf</code><code
+                                                            class=plain>(</code><code
+                                                            class=string>"Fibonacci number is %d "</code><code
+                                                            class=plain>, fib(n));</code></div>
+                                                    <div class="line number22 index21 alt1"><code
+                                                            class="undefined spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code
+                                                            class="keyword bold">return</code> <code
+                                                            class=plain>0;</code></div>
+                                                    <div class="line number23 index22 alt2"><code class=plain>}</code>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class=code-editor-container></div>
+                        </p>
+                    </div>
+                    <div class=code-output-container>
+                        <div class=output-block><i id=output-icon title=Output
+                                class="gfg-icon gfg-icon_arrow-right-editor padding-2px code-sidebar-button output-icon"></i>
+                            </p>
+                            <pre class=output-pre></pre>
+                            </p>
+                        </div>
+                        <div class=ide-link-div><i id=copy-url-button title="Copy Generated Ide URL"
+                                class="gfg-icon gfg-icon_copy padding-2px code-sidebar-button copy-url-button"></i></p>
+                            <pre id=ide-url></pre>
+                            </p>
+                        </div>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class=code-output><strong>Output</strong></p>
+                <pre>Fibonacci number is 34 </pre>
+            </div>
+            <p><strong>Time Complexity:</strong> O(N)<br><strong>Auxiliary Space: </strong>O(N)</p>
+        </blockquote>
+    </div>
+
+
+    <%- include('partials/footer'); -%>
